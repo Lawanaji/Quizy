@@ -90,7 +90,7 @@ const QuestionPage = () => {
             {showResults ? (
                 <AnswerPage userAnswers={userAnswers} />
             ) : isQuizFinished ? (
-                <div className='px-80 pt-12  md:px-20 lg:px-32 xl:px-60 pt-5'>
+                <div className='px-80 pt-12 '>
                     <Link to={'/dashbord'} className='absolute right-20 py-6'><img src={Cancel} alt='cancel logo' /></Link>
                     <h2 className='mt-5 text-customColor text-3xl font-bold text-center'>Congratulations</h2>
                     <p className='text-purple-300 text-lg font-base text-center'>Category: Science</p>

@@ -16,6 +16,11 @@ export default {
         customText: '#F4F3F6',
         primaryColor: "#442D7C",
         secondaryColor: "#1E0E62",
+        customColor: '#442D7C',
+        customText: '#F4F3F6'
+      },
+      fontFamily: {
+        'Rubik': ['"Rubik"', "sans-serif"]
       },
       fontFamily: {
         'Rubik': ['"Rubik"', "sans-serif"]

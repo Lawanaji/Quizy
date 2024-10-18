@@ -24,7 +24,6 @@ const AnswerPage = ({ userAnswers }) => {
                 {userAnswers.map((answer, index) => (
                     <div key={index} className='my-4 p-4'>
                         <p className='text-sm text-customColor font-bold mb-2'>{index + 1}<span className='pl-10'> {answer.question} </span></p>
-
                         {answer.options && answer.options.length > 0 ? (
                             answer.options.map((option, optionIndex) => {
                                 const isCorrectAnswer = option === answer.correctAnswer;
