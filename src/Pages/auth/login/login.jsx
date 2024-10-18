@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import axiosInstance from '../../../Utilities/Request/index'
+import axiosInstance from '../../../Utilities/Request/index';
 import loginImage from '../../../assets/design-design-thinking-01-3.svg';
 import { useNavigate } from 'react-router-dom';
-import {toast} from "react-toastify"
-
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -12,36 +11,40 @@ const Login = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
-  const onSubmit  = async (formData) => {
+  const onSubmit = async (formData) => {
     setLoading(true);
     if (loading) return;
+
     const data = {
       email: formData.email,
       password: formData.password
-    }
+    };
+
     const { email } = formData;
     const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    
+
     if (!email || !regex.test(email)) {
-      return toast.error("Invalid email provided")
+      setLoading(false); 
+      return toast.error("Invalid email provided");
     }
 
     try {
-      const response = await axiosInstance.post('/auth/login', data)
-      console.log(response.data, 'from on submit ')
-        toast.success("Login Successful", {autoClose: 4000, pauseOnHover:false})
-        localStorage.setItem('accessToken', response.data.token)
+      const response = await axiosInstance.post('/auth/login', data);
+      console.log(response.data, 'from on submit ');
+
+      if (response.data.token) {
+        toast.success("Login Successful", { autoClose: 4000, pauseOnHover: false });
+        localStorage.setItem('accessToken', response.data.token);
         navigate("/dashboard");
-        if(!response.data.token){
-          toast.error(response.data.message)
-          }
-        
-      } catch (error) {
-        toast.error(error.message || "an error occur")
-      }finally{
-            setLoading(false)
+      } else {
+        toast.error(response.data.message || "An error occurred during login");
       }
-   
+      
+    } catch (error) {
+      toast.error(error.message || "An error occurred during login");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -74,6 +77,7 @@ const Login = () => {
                 {...register("password", { required: true, minLength: 8 })}
                 required
               />
+              {errors.password && <p className="text-secondary mt-1">Password must be at least 8 characters long</p>}
             </div>
 
             <button 
