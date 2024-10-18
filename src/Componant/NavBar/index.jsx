@@ -1,9 +1,10 @@
 import React from 'react'
 import './index.css'
-import QuizzyLogo  from "../../assests/quizyLogo.svg";
-import ImageIcon  from "../../assests/imageIcon.svg";
-import Notification  from "../../assests/notification.svg";
-import Help  from "../../assests/help.svg";
+import QuizzyLogo from '../../assets/quizyLogo.svg';
+import ImageIcon from '../../assets/imageIcon.svg';  
+import Notification from '../../assets/notification.svg';  
+import Help from '../../assets/help.svg';  
+
 
 const NavBar = () => {
     return (
