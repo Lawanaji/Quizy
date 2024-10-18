@@ -63,8 +63,9 @@ const Login = () => {
       
       </div>
      
-      <div className='bg-primaryColor w-full flex items-center justify-center md:rounded-l-lg contai'>
-        <div className='text-white w-full flex flex-col justify-center items-center p-5 container'>
+      <div className='bg-primaryColor w-full px-2  py-5 md:rounded-l-lg '>
+      <Link to={'/'} className='text-primaryColor rounded py-1 bg-white px-5'>Back</Link>
+        <div className='text-white w-full flex flex-col justify-center items-center p-5 mt-[10rem]'>
           <h1 className='font-semibold text-center md:text-start text-4xl mb-1'>Welcome to Quizzy</h1>
           <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[350px] min-h-[200px] rounded p-4 text-xs">
             <div className='grid mb-3'>
