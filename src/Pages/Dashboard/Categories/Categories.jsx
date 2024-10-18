@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 
 const Categories = () => {
   return (
-    <div className="w-full h-screen bg-gray-100">
+    <div className="w-full h-full bg-gray-100">
       <ul className="container mx-auto p-5" style={{ fontFamily: 'Roboto' }}>
         <li className="w-full flex flex-col gap-10">
           {/* Welcome Section */}
-          <div className="container flex flex-col sm:flex-row items-center justify-between w-full h-auto bg-customPurple p-6 rounded-lg">
+          {/* <div className="container flex flex-col sm:flex-row items-center justify-between w-full h-auto bg-customPurple p-6 rounded-lg">
             <div className="w-24 h-24 bg-cover bg-center sm:w-40 sm:h-40" style={{ backgroundImage: "url('./freepik.png')" }}></div>
             <div className="text-white text-center sm:text-left font-mono text-xl sm:text-2xl">
               <p>Welcome, Ashimolowo Riliwan</p>
             </div>
-          </div>
+          </div> */}
 
         
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto w-full">
