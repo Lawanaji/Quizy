@@ -1,0 +1,74 @@
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import loginImage from '../../../assets/design-design-thinking-01-3.svg';
+import { useNavigate } from 'react-router-dom';
+
+const Login = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const onSubmit = (formData) => {
+    if (loading) return;
+
+    const { email } = formData;
+    const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    
+    if (!email || !regex.test(email)) {
+      return console.log("Invalid email provided");
+    }
+
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      navigate("/dashboard");
+    }, 4000);
+  };
+
+  return (
+    <div className='w-full h-screen flex'>
+      <img src={loginImage} alt="" className='hidden w-[60%] md:block' />
+      <div className='bg-primaryColor w-[40%] flex items-center justify-center md:rounded-l-lg'>
+        <div className='text-white w-full flex flex-col justify-center items-center p-5'>
+          <h1 className='font-semibold text-center md:text-start text-4xl mb-1'>Welcome to Quizzy</h1>
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[350px] min-h-[200px] rounded p-4 text-xs">
+            <div className='grid mb-6'>
+              <label htmlFor="email">Email</label>
+              <input 
+                type="email" 
+                name="email" 
+                id="email" 
+                className='p-3 w-full border border-[#D9D9D9] rounded text-primaryColor focus:outline-primaryColor focus:border-primary transition-all'
+                {...register("email", { required: true })}
+                required
+              />
+              {errors.email && <p className="text-secondary mt-1">Email field is required</p>}
+            </div>
+
+            <div className='grid mb-4'>
+              <label htmlFor="password">Password</label>
+              <input 
+                type={showPassword ? "text" : "password"} 
+                name="password" 
+                id="password" 
+                className='p-3 w-full border border-[#D9D9D9] text-primaryColor rounded focus:outline-primaryColor focus:border-primary transition-all'
+                {...register("password", { required: true, minLength: 8 })}
+                required
+              />
+            </div>
+
+            <button 
+              type="submit" 
+              className='p-3 w-full bg-white border border-[#D9D9D9] text-primaryColor rounded focus:outline-primaryColor focus:border-primary transition-all'>
+              {loading ? "Loading..." : "Login"}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
