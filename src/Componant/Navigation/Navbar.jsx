@@ -18,7 +18,7 @@ const Navbar = () => {
         </ul>
             <ul className='hidden md:flex items-center text-lg font-semibold justify-center gap-5'>
                 <Link to={'/auth/login'}>Login</Link>
-                <Link className='bg-white text-primaryColor font-bold py-2 px-3 rounded-lg'>Take A Quiz</Link>
+                <Link className='bg-white text-primaryColor font-bold py-2 px-3 rounded-lg' to={'/question'}>Take A Quiz</Link>
             </ul>
 
       </div>
