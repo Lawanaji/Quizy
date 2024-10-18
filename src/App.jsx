@@ -6,6 +6,8 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import Login from "./Pages/auth/login/login";
 import 'react-toastify/dist/ReactToastify.css';
 import QuestionPage from "./Pages/Dashboard/QustionPage/index";
+import Categories from "./Pages/Dashboard/Categories/Categories";
+import Signup from "./Pages/auth/Signup/Signup";
 
 function App() {
   return (
@@ -18,11 +20,14 @@ function App() {
 
           {/* Auth Routes */}
           <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/signup" element={<Signup />} />
 
-          {/* Dashboard Layout with nested routes */}
+        
           <Route path="dashboard" element={<Dashboard />}>
-            <Route index element={<QuestionPage />} /> {/* Default child route for dashboard */}
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route index element={<Categories />} /> 
+            <Route path="question" element={<QuestionPage />} />
+
+            {/* <Route path="dashboard" element={<Dashboard />} /> */}
           </Route>
         </Routes>
       </BrowserRouter>

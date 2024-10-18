@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axiosInstance from '../../../Utilities/Request/index';
 import loginImage from '../../../assets/design-design-thinking-01-3.svg';
-import { useNavigate } from 'react-router-dom';
+import google from '../../../assets/flat-color-icons_google.svg'
+import facebook from '../../../assets/brandico_facebook.svg'
+import logo from '../../../assets/quizzypurple.svg'
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Login = () => {
@@ -49,12 +52,22 @@ const Login = () => {
 
   return (
     <div className='w-full h-screen flex'>
-      <img src={loginImage} alt="" className='hidden w-[60%] md:block' />
-      <div className='bg-primaryColor w-[40%] flex items-center justify-center md:rounded-l-lg'>
-        <div className='text-white w-full flex flex-col justify-center items-center p-5'>
+      
+      <div className='w-full py-10 hidden  md:block '>
+        <div className='container'>
+
+        <img src={logo} alt=""  />
+      <img src={loginImage} alt="" className='w-[70%] object-contain' />
+      <h1>Take a Quiz and increase your knowledge</h1>
+        </div>
+      
+      </div>
+     
+      <div className='bg-primaryColor w-full flex items-center justify-center md:rounded-l-lg contai'>
+        <div className='text-white w-full flex flex-col justify-center items-center p-5 container'>
           <h1 className='font-semibold text-center md:text-start text-4xl mb-1'>Welcome to Quizzy</h1>
           <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[350px] min-h-[200px] rounded p-4 text-xs">
-            <div className='grid mb-6'>
+            <div className='grid mb-3'>
               <label htmlFor="email">Email</label>
               <input 
                 type="email" 
@@ -67,7 +80,7 @@ const Login = () => {
               {errors.email && <p className="text-secondary mt-1">Email field is required</p>}
             </div>
 
-            <div className='grid mb-4'>
+            <div className='grid mb-3'>
               <label htmlFor="password">Password</label>
               <input 
                 type={showPassword ? "text" : "password"} 
@@ -82,11 +95,25 @@ const Login = () => {
 
             <button 
               type="submit" 
-              className='p-3 w-full bg-white border border-[#D9D9D9] text-primaryColor rounded flex justify-center items-center gap-2 font-semibold'>
+              className='p-3 w-full bg-white border border-[#D9D9D9] mt-6 text-primaryColor rounded flex justify-center items-center gap-2 font-semibold'>
               {loading ? <span className='inline-block w-[20px] h-[20px] rounded-full border-2 border-b-transparent border-primaryColor animate-spin'></span> : null}
               <span>Login</span>
             </button>
           </form>
+          <div className='text-center mt-10 space-y-4'>
+            <h1>OR</h1>
+            <h2>Sign in With</h2>
+
+            <span className='flex gap-5 justify-center'>
+              <img src={google} alt="" />
+              <img src={facebook} alt="" />
+            </span>
+
+              <span className='flex gap-5'>
+                        <p>Don’t have an account? </p>
+                      <Link to={'/auth/signup'}>Sign up</Link>
+              </span>
+          </div>
         </div>
       </div>
     </div>
