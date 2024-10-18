@@ -1,9 +1,9 @@
 import React from 'react'
 import './index.css'
-import QuizzyLogo from '../../assets/quizyLogo.svg';
-import ImageIcon from '../../assets/imageIcon.svg';  
-import Notification from '../../assets/notification.svg';  
-import Help from '../../assets/help.svg';  
+import QuizzyLogo from '../../../assets/quizyLogo.svg';
+import ImageIcon from '../../../assets/imageIcon.svg';  
+import Notification from '../../../assets/notification.svg';  
+import Help from '../../../assets/help.svg';  
 
 
 const NavBar = () => {

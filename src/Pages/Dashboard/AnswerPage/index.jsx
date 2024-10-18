@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from '../NavBar';
+// import NavBar from '../../Pages/Dashboard/NavBar';
 import { Link } from 'react-router-dom'
 
 const AnswerPage = ({ userAnswers }) => {
@@ -18,7 +18,7 @@ const AnswerPage = ({ userAnswers }) => {
     return (
         <div>
             <NavBar />
-            <div className='mt-10 px-80' id="#top">
+            <div className='mt-10 px-80' >
             <h2 className='mt-5 text-customColor text-3xl font-bold text-center'>Hey Champ!</h2>
             <p className='mt-5 text-customColor text-xl mb-10 font-base text-center'>View your answers here.</p>
                 {userAnswers.map((answer, index) => (

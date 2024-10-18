@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import NavBar from '../NavBar';
-import Cancel  from '../../assets/cancel.svg'
-import Share from '../../assets/share.svg';
-import AnswerPage from '../AnswerPage';
+import Cancel  from '../../../assets/cancel.svg'
+import Share from '../../../assets/share.svg';
+import AnswerPage from '../../Dashboard/AnswerPage/index';
 
 const quizQuestions = [
     {
@@ -25,6 +24,9 @@ const quizQuestions = [
         question: "What is the largest planet in our solar system?",
         options: ["Earth", "Mars", "Jupiter", "Saturn"],
         answer: "Jupiter"
+    },
+    {
+        
     }
 ];
 
@@ -90,7 +92,7 @@ const QuestionPage = () => {
             {showResults ? (
                 <AnswerPage userAnswers={userAnswers} />
             ) : isQuizFinished ? (
-                <div className='px-80 pt-12 '>
+                <div className='px-80 '>
                     <Link to={'/dashbord'} className='absolute right-20 py-6'><img src={Cancel} alt='cancel logo' /></Link>
                     <h2 className='mt-5 text-customColor text-3xl font-bold text-center'>Congratulations</h2>
                     <p className='text-purple-300 text-lg font-base text-center'>Category: Science</p>
@@ -101,8 +103,8 @@ const QuestionPage = () => {
                         <button className='w-[270px] mx-2 px-10 py-3 text-xl font-bold text-customColor border border-customColor rounded-lg bg-white text-center mb-4' onClick={handleViewAnswers}>
                             View Answers
                         </button>
-                        <Link to={'/dashbord'}>
-                        <button className='w-[270px] ml-2 px-10 py-3 text-xl font-bold text-white rounded-lg bg-customColor text-center mb-4' onClick={handleRestart}>
+                        <Link onClick={handleRestart} >
+                        <button className='w-[270px] ml-2 px-10 py-3 text-xl font-bold text-white rounded-lg bg-customColor text-center mb-4' >
                             Play Again
                         </button>
                         </Link>
@@ -114,7 +116,6 @@ const QuestionPage = () => {
                 </div>
             ) : (
                 <div>
-                    <NavBar />
                     <div className='px-80 pt-5'>
                         <h3 className='text-purple-400 text-lg font-bold text-center'>Science Quiz</h3>
                         <p className='mt-4 text-red-600 text-lg font-bold text-center'>
@@ -133,7 +134,7 @@ const QuestionPage = () => {
                         </div>
                         {currentQuestionIndex === 0 ? (
                             <button
-                                className='w-full px-10 py-3 text-2xl font-base font-Rubik text-white leading-relaxed rounded-lg text-left bg-customColor text-center mb-4'
+                                className='w-full px-10 py-3 text-2xl font-base font-Rubik text-white leading-relaxed rounded-lg  bg-customColor text-center mb-4'
                                 onClick={handleSubmitAnswer}
                                 disabled={!selectedOption}
                             >
@@ -141,7 +142,7 @@ const QuestionPage = () => {
                             </button>
                         ) : currentQuestionIndex === quizQuestions.length - 1 ? (
                             <button
-                                className='w-full px-10 py-3 text-2xl font-base font-Rubik text-white leading-relaxed rounded-lg text-left bg-green-600 text-center mb-4'
+                                className='w-full px-10 py-3 text-2xl font-base font-Rubik text-white leading-relaxed rounded-lg  bg-green-600 text-center mb-4'
                                 onClick={handleSubmitAnswer}
                                 disabled={!selectedOption}
                             >
@@ -150,13 +151,13 @@ const QuestionPage = () => {
                         ) : (
                             <div>
                                 <button
-                                    className='w-[300px] px-10 py-3 text-2xl font-base font-Rubik text-white rounded-lg text-left bg-customColor text-center mb-4'
+                                    className='w-[300px] px-10 py-3 text-2xl font-base font-Rubik text-white rounded-lg  bg-customColor text-center mb-4'
                                     onClick={() => setCurrentQuestionIndex(currentQuestionIndex - 1)}
                                 >
                                     Previous
                                 </button>
                                 <button
-                                    className='w-[300px] ml-6 px-10 py-3 text-2xl font-base font-Rubik text-white rounded-lg text-left bg-customColor text-center mb-4'
+                                    className='w-[300px] ml-6 px-10 py-3 text-2xl font-base font-Rubik text-white rounded-lg  bg-customColor text-center mb-4'
                                     onClick={handleSubmitAnswer}
                                     disabled={!selectedOption}
                                 >

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Categories = () => {
   return (
@@ -15,9 +16,9 @@ const Categories = () => {
 
             <div className="art border-2 rounded-xl border-customPurple h-72 flex flex-col items-center overflow-auto">
              
-                <div className="text-center text-2xl text-customPurple"><h3>Arts</h3></div>
-                <div className="text-center"><p>Explore quizzez on Art history, Famous partner and creative movement</p></div>
-                <div className="mt-6 text-center text-white inline-block bg-opacity-80 w-36 transition-all bg-purple-400 hover:text-gray-300 rounded-xl hover:ring-1">Take Task</div>
+                <div className="text-center text-2xl text-customPurple"><h3>random question</h3></div>
+                <div className="text-center"><p>get a random question to answer</p></div>
+                <Link to={'dashboard'} className="mt-6 text-center text-white inline-block bg-opacity-80 w-36 transition-all bg-purple-400 hover:text-gray-300 rounded-xl hover:ring-1">Take Task</Link>
             </div>
             <div className="science border-2 rounded-xl border-pink-500 h-72 flex flex-col items-center overflow-auto">
                
