@@ -36,7 +36,7 @@ html, body{
   
 ::-webkit-scrollbar-thumb {
     border-radius: 0.5rem;
-    background-color: #238DC1;
+    background-color: #442D7C;
     transition: all 0.4s ease-in-out;
 }
 

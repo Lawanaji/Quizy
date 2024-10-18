@@ -3,6 +3,7 @@ import HeroSection from './HeroSection'
 import SubHeroSection from './subHeroSection'
 import Features from './Features'
 import Comments from './Comments'
+import MoreContent from './MoreContent'
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
         </div>
         <Features />
         <Comments />
+        <MoreContent />
     </div>
   )
 }
