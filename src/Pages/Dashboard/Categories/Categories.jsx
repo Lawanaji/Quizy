@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Categories = () => {
   return (
-    <div className="w-full h-full bg-gray-100">
+    <div className="w-full h-full bg-gray-100 overflow-hidden">
       <ul className="container mx-auto p-5" style={{ fontFamily: 'Roboto' }}>
         <li className="w-full flex flex-col gap-10">
           {/* Welcome Section */}
@@ -15,7 +15,7 @@ const Categories = () => {
           </div> */}
 
         
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-hidden mx-auto w-full">
            
             <div className="art border-2 rounded-xl border-customPurple h-72 flex flex-col items-center p-6 bg-white shadow-lg">
               <div className="text-center text-2xl text-customPurple mb-4">
