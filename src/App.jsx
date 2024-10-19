@@ -6,8 +6,6 @@ import AnswerPage from "./Componant/AnswerPage"
 import Home from "./Pages/LandingPage/Home"
 import Dashboard from "./Pages/Dashboard/Dashboard"
 import Login from "./Pages/auth/login/login"
-import QuestionPage from '../src/Componant/QustionPage/index';
-import AnswerPage from '../src/Componant/AnswerPage/index'
 import 'react-toastify/dist/ReactToastify.css';
 
 
