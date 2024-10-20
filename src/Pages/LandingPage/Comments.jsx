@@ -74,9 +74,9 @@ const Comments = () => {
 
           
         {comments.map((item)=>(
-          <div className='flex justify-center items-center '>
-            <div className='flex gap-10 w-[500px]'>
-            <img src={item.image} alt="" className='object-contain w-[100px] h-[100px]' />
+          <div className='flex justify-center w-[400px] items-center p-5'>
+            <div className='flex w-[400px] gap-10 p-4'>
+            <img src={item.image} alt="" className='object-contain w-[50px] h-[50px]' />
             <div className='grid gap-10'>
                <p className=''>{item.comment}</p>
             <strong>{item.name}</strong>
