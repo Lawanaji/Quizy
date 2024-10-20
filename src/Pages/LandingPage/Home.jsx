@@ -7,11 +7,10 @@ import MoreContent from './MoreContent'
 
 const Home = () => {
   return (
-    <div className=' relative top-[8rem] h-full w-full snap-none'>
-        <div className='container'>
+    <div className=' relative top-[8rem] h-full w-full'>
         <HeroSection />
         <SubHeroSection />
-        </div>
+        
         <Features />
         <Comments />
         <MoreContent />
