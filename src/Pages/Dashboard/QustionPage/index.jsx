@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import Cancel  from '../../../assets/cancel.svg'
+import Cancel from '../../../assets/cancel.svg'
 import Share from '../../../assets/share.svg';
 import AnswerPage from '../AnswerPage/index';
+import ShareModal from '../../../Componant/QustionPage/share'
 
 const quizQuestions = [
     {
@@ -35,6 +36,7 @@ const QuestionPage = () => {
     const [userAnswers, setUserAnswers] = useState([]);
     const [isQuizFinished, setIsQuizFinished] = useState(false);
     const [showResults, setShowResults] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
     const [timer, setTimer] = useState(60);
 
@@ -47,7 +49,7 @@ const QuestionPage = () => {
     //         console.error('Error fetching questions:', error);
     //       }
     //     };
-    
+
     //     fetchQuestions();
     //   }, []);
 
@@ -60,6 +62,7 @@ const QuestionPage = () => {
         }
     }, [timer, isQuizFinished]);
 
+
     const currentQuestion = quizQuestions[currentQuestionIndex];
 
     const handleOptionClick = (option) => setSelectedOption(option);
@@ -68,7 +71,7 @@ const QuestionPage = () => {
         const isCorrect = selectedOption === currentQuestion.answer;
         const answerData = {
             question: currentQuestion.question,
-            options: currentQuestion.options, 
+            options: currentQuestion.options,
             selectedAnswer: selectedOption,
             correctAnswer: currentQuestion.answer,
             isCorrect: isCorrect
@@ -85,6 +88,32 @@ const QuestionPage = () => {
         }
     };
 
+    const handleShareResults = (platform) => {
+        const shareUrl = window.location.href;
+        const shareMessage = `I scored ${score}/4 on this amazing quiz! Can you beat me?`;
+
+        let url = "";
+        switch (platform) {
+            case 'twitter':
+                url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareMessage)}`;
+                break;
+            case 'facebook':
+                url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareMessage)}`;
+                break;
+            case 'linkedin':
+                url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+                break;
+            default:
+                break;
+        }
+        if (url) {
+            window.open(url, 'noopener,noreferrer');
+        }
+        setShowModal(false); 
+    };
+    console.log(showModal);
+    const openModal = () => setShowModal(true);
+    const closeModal = () => setShowModal(false);
     const handleViewAnswers = () => setShowResults(true);
     const handleRestart = () => {
         setCurrentQuestionIndex(0);
@@ -115,14 +144,15 @@ const QuestionPage = () => {
                             View Answers
                         </button>
                         <a onClick={handleRestart}>
-                        <button className='w-[270px] ml-2 px-10 py-3 text-xl font-bold text-white rounded-lg bg-customColor text-center mb-4' >
-                            Play Again
-                        </button>
+                            <button className='w-[270px] ml-2 px-10 py-3 text-xl font-bold text-white rounded-lg bg-customColor text-center mb-4' >
+                                Play Again
+                            </button>
                         </a>
-                        <button className='w-full mx-2 mt-12 px-10 py-3 text-xl font-bold text-white rounded-lg bg-customColor text-center mb-4'>
-                            <img src={Share} alt='share logo' className='absolute right-[550px] bottom-[75px]' />
+                        <button onClick={openModal} className='w-full mx-2 mt-12 px-10 py-3 text-xl font-bold text-white rounded-lg bg-customColor text-center mb-4'>
                             Share Results
+                            <img src={Share} alt='share logo' className='absolute right-[550px] bottom-[75px]' />
                         </button>
+                        <ShareModal showModal={showModal} closeModal={closeModal} handleShareResults={handleShareResults} />
                     </div>
                 </div>
             ) : (
