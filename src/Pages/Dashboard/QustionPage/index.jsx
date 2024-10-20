@@ -3,6 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import Cancel from '../../../assets/cancel.svg';
 import Share from '../../../assets/share.svg';
 import AnswerPage from '../../Dashboard/AnswerPage/index';
+import ShareModal from '../../../Componant/QustionPage/share'
+
 
 const quizQuestions = [
     {
@@ -65,7 +67,8 @@ const QuestionPage = () => {
     const [userAnswers, setUserAnswers] = useState([]);
     const [isQuizFinished, setIsQuizFinished] = useState(false);
     const [showResults, setShowResults] = useState(false);
-    const [timer, setTimer] = useState(60);
+   const [showModal, setShowModal] = useState(false);  
+  const [timer, setTimer] = useState(60);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -101,6 +104,32 @@ const QuestionPage = () => {
             setIsQuizFinished(true);
         }
     };
+    const handleShareResults = (platform) => {
+        const shareUrl = window.location.href;
+        const shareMessage = `I scored ${score}/4 on this amazing quiz! Can you beat me?`;
+
+        let url = "";
+        switch (platform) {
+            case 'twitter':
+                url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareMessage)}`;
+                break;
+            case 'facebook':
+                url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareMessage)}`;
+                break;
+            case 'linkedin':
+                url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+                break;
+            default:
+                break;
+        }
+        if (url) {
+            window.open(url, 'noopener,noreferrer');
+        }
+        setShowModal(false); 
+    };
+    console.log(showModal);
+    const openModal = () => setShowModal(true);
+    const closeModal = () => setShowModal(false);
 
     const handleViewAnswers = () => setShowResults(true);
     const handleRestart = () => {
@@ -143,10 +172,11 @@ const QuestionPage = () => {
                                 Play Again
                             </button>
                         </Link>
-                        <button className="w-full px-6 py-3 text-xl font-bold text-white rounded-lg bg-customColor text-center mb-4">
+                        <button onClick={openModal} className="w-full px-6 py-3 text-xl font-bold text-white rounded-lg bg-customColor text-center mb-4">
                             <img src={Share} alt="share logo" className="inline-block mr-2" />
                             Share Results
                         </button>
+                        <ShareModal showModal={showModal} closeModal={closeModal} handleShareResults={handleShareResults} />
                     </div>
                 </div>
             ) : (
