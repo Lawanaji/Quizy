@@ -55,7 +55,7 @@ const Navbar = () => {
           {/* Desktop Action Links */}
           <ul className='hidden md:flex items-center text-lg font-semibold justify-center gap-5'>
             <Link to={'/auth/login'}>Login</Link>
-            <Link to={'/dashboard'} className='bg-white text-primaryColor font-bold py-2 px-3 rounded-lg'>
+            <Link to={'/auth/Signup'} className='bg-white text-primaryColor font-bold py-2 px-3 rounded-lg'>
               Take A Quiz
             </Link>
           </ul>

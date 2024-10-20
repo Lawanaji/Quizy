@@ -10,6 +10,7 @@ const Home = () => {
     <div className=' relative top-[8rem] h-full w-full'>
         <HeroSection />
         <SubHeroSection />
+        
         <Features />
         <Comments />
         <MoreContent />
