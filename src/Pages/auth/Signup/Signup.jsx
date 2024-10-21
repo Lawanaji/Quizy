@@ -24,11 +24,11 @@ const Signup = () => {
             password: formData.password
         };
     
-        // const email = formData.email; // Correctly assign the email field
+        // const email = formData.email;
         // const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,}))$/i;
     
         // if (!email || !regex.test(email)) {
-        //     setLoading(false);  // Stop the loading spinner
+        //     setLoading(false);  
         //     return toast.error("Invalid email provided");
         // }
     
@@ -44,7 +44,8 @@ const Signup = () => {
                 toast.error(response.data.message);
             }
         } catch (error) {
-            toast.error(error.message || "An error occurred");
+            toast.error(error || "An error occurred");
+            console.log(error)
         } finally {
             setLoading(false);
         }
@@ -70,7 +71,7 @@ const Signup = () => {
           <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[350px] min-h-[200px] rounded p-4 text-xs">
             <div className='grid mb-3'>
                 <label htmlFor="name">Full Name</label>
-                <input type="text" name="full_Name" id="full_Name"  className='p-3 w-full border border-[#D9D9D9] rounded text-primaryColor focus:outline-primaryColor focus:border-primary transition-all' placeholder='Name'
+                <input type="name" name="full_Name" id="full_Name"  className='p-3 w-full border border-[#D9D9D9] rounded text-primaryColor focus:outline-primaryColor focus:border-primary transition-all' placeholder='Name'
                 {...register("name", {required: true})}
                 required
                 />

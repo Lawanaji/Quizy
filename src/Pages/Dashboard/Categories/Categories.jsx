@@ -1,74 +1,67 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import imge1 from '../../../assets/Art.svg'
+import imge2 from '../../../assets/dna.svg'
+import imge3 from '../../../assets/Commercial 2.svg'
+import imge4 from '../../../assets/interface-searching-01-8.svg'
 const Categories = () => {
+  const items = [
+    {
+      image: imge1,
+      topic: 'Arts',
+      paraprah: 'Explore quizzes on Art history, Famous painter and creative movement',
+      linkname: 'Take Quiz',
+      path: 'question',
+      style: ' flex flex-col items-center p-6 shadow-lg border-[#442D7C] border-2'
+    },
+    {
+      image: imge2,
+      topic: 'Science',
+      paraprah: 'Challenge your knowledge in physics, chemistry, biology, and more',
+      linkname: 'Take Quiz',
+      path: 'question',
+      style: ' flex flex-col items-center p-6 shadow-lg border-[#F85ACA] border-2'
+    },
+    {
+      image: imge3,
+      topic: 'Commercial',
+      paraprah: 'Test your skills in business, economics, finance, and marketing',
+      linkname: 'Take Quiz',
+      path: 'question',
+      style: ' flex flex-col items-center p-6 shadow-lg border-[#4BAE48] border-2'
+    },
+    {
+      image: imge4,
+      topic: 'General Studies',
+      paraprah: 'Dive into global politics, international relations, and world events',
+      linkname: 'Take Quiz',
+      path: 'question',
+      style: ' flex flex-col items-center p-6 shadow-lg border-[#05ACF6] border-2'
+    }
+  ]
   return (
-    <div className="w-full h-full bg-gray-100 overflow-hidden">
-      <ul className="container mx-auto p-5" style={{ fontFamily: 'Roboto' }}>
-        <li className="w-full flex flex-col gap-10">
-          {/* Welcome Section */}
-          {/* <div className="container flex flex-col sm:flex-row items-center justify-between w-full h-auto bg-customPurple p-6 rounded-lg">
-            <div className="w-24 h-24 bg-cover bg-center sm:w-40 sm:h-40" style={{ backgroundImage: "url('./freepik.png')" }}></div>
-            <div className="text-white text-center sm:text-left font-mono text-xl sm:text-2xl">
-              <p>Welcome, Ashimolowo Riliwan</p>
-            </div>
-          </div> */}
-
+    <div className="w-full h-full bg-gray-100">
+      <ul className="container">
         
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-hidden mx-auto w-full">
-           
-            <div className="art border-2 rounded-xl border-customPurple h-72 flex flex-col items-center p-6 bg-white shadow-lg">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:mt-[10rem]">
+           {items.map((item)=>(
+
+            <div className={item.style}>
+              <img src={item.image} alt="" />
               <div className="text-center text-2xl text-customPurple mb-4">
-                <h3>Choose a Random Question</h3>
+                <h3>{item.topic}</h3>
               </div>
               <div className="text-center mb-4">
-                <p>Get a random question to answer</p>
+                <p>{item.paraprah}</p>
               </div>
-              <Link to={'question'} className="mt-auto text-center text-white bg-purple-400 hover:bg-purple-500 w-36 py-2 rounded-xl transition-all">
-                Take Task
-              </Link>
+              <Link to={item.path} className="mt-auto text-center text-white bg-purple-400 hover:bg-purple-500 w-36 py-2 rounded-xl transition-all">
+               {item.linkname}</Link>
             </div>
 
-           
-            <div className="science border-2 rounded-xl border-pink-500 h-72 flex flex-col items-center p-6 bg-white shadow-lg">
-              <div className="text-center text-2xl text-pink-500 mb-4">
-                <h3>Science</h3>
-              </div>
-              <div className="text-center mb-4">
-                <p>Challenge your knowledge in physics, chemistry, biology, and more</p>
-              </div>
-              <div className="mt-auto text-center text-white bg-pink-500 hover:bg-pink-600 w-36 py-2 rounded-xl transition-all font-semibold">
-                Take Task
-              </div>
-            </div>
 
-           
-            <div className="commercial border-2 rounded-xl border-green-500 h-72 flex flex-col items-center p-6 bg-white shadow-lg">
-              <div className="text-center text-2xl text-green-500 mb-4">
-                <h3>Commercial</h3>
-              </div>
-              <div className="text-center mb-4">
-                <p>Test your skills in business, economics, finance, and marketing</p>
-              </div>
-              <div className="mt-auto text-center text-white bg-green-500 hover:bg-green-600 w-36 py-2 rounded-xl transition-all font-semibold">
-                Take Task
-              </div>
-            </div>
-
-            
-            <div className="studies border-2 rounded-xl border-blue-500 h-72 flex flex-col items-center p-6 bg-white shadow-lg">
-              <div className="text-center text-2xl text-blue-500 mb-4">
-                <h3>General Studies</h3>
-              </div>
-              <div className="text-center mb-4">
-                <p>Dive into global politics, international relations, and events</p>
-              </div>
-              <div className="mt-auto text-center text-white bg-blue-500 hover:bg-blue-600 w-36 py-2 rounded-xl transition-all font-semibold">
-                Take Task
-              </div>
-            </div>
+           ))}
           </div>
-        </li>
+       
       </ul>
     </div>
   );
